@@ -46,17 +46,18 @@ app.post('/api/registerEvent',(req,res) =>{
 app.post('/api/registerforevent', async (req,res) =>{
 	var data = req.body;
 	// let user ="":
-	user = await registerforevent.findOne({ $or: [{ EmailId: req.body.EmailId }, { MobileNumber: req.body.MobileNumber }] });
-	if(user){
-		// console.log(user.toObject());
-		return res.status(400).json({
-			'Message':'User Already exists',
-			'StatusCode':400
-		})
-	}
+	// user = await registerforevent.findOne({ $or: [{ EmailId: req.body.EmailId }, { MobileNumber: req.body.MobileNumber }] });
+	// if(user){
+	// 	// console.log(user.toObject());
+	// 	return res.status(400).json({
+	// 		'Message':'User Already exists',
+	// 		'StatusCode':400
+	// 	})
+	// }
 	registerforevent.create(data,(err,response)=>{
 		if(err){
-			res.json(error);
+			
+			res.json(err);
 		}
 		res.status(200).json({
 			'Message':'Ticket booked for event',
